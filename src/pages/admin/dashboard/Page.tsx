@@ -42,7 +42,7 @@ const Page = () => {
   const [month, setMonth] = useState<Dayjs | null>();
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { isFetching, data } = useQuery({
+  const {  data } = useQuery({
     queryKey: [AdminQueryKeyEnum.STATISTIC, endDate, startDate],
     queryFn: () => {
       return getStatisticDashboard({ endDate, startDate });

@@ -2,14 +2,14 @@
 import { createTemplateAgency, getAllCountry } from "@/sevices/apis/auth/authApi";
 import { Button, Form, Input, Select } from "antd";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useMutation } from "react-query";
-import {  useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 export const MasterApprovalRequestForm = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [country, setCountry] = useState([])
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-   const navigate = useNavigate();
+  //  const navigate = useNavigate();
    const mutation = useMutation({
      // eslint-disable-next-line @typescript-eslint/no-explicit-any
      mutationFn: (body) => {
@@ -39,9 +39,10 @@ export const MasterApprovalRequestForm = () => {
 
    const getAllCountrys = async() => {
     const result = await getAllCountry()
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let data  = []
-    result.data.map((item , index) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any, prefer-const
+    let data : any  = []
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    result.data.map((item : any ) => {
         const body = {
             label: item.countryName,
             value: item.id,

@@ -104,8 +104,8 @@ const Page = () => {
   const onClickAll = () => {
     setStartDate("");
     setEndDate("");
-    const currentDate = dayjs();
-    const format = currentDate.format("YYYY-MM-DD");
+    // const currentDate = dayjs();
+    // const format = currentDate.format("YYYY-MM-DD");
     setMonth(undefined);
   };
 

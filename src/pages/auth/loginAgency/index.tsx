@@ -1,41 +1,39 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { register } from "@/sevices/apis/auth/authApi";
-import { IRegister, LoginField } from "@/types/auth";
+// import { register } from "@/sevices/apis/auth/authApi";
+import { LoginField } from "@/types/auth";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
-import toast from "react-hot-toast";
-import { useMutation } from "react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoginAgency = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const navigate = useNavigate();
-  const mutation = useMutation({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    mutationFn: (body: any) => {
-        toast.error('');
-        return null
-    },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onSuccess: (res) => {
-      if (res.data.error === false) {
-        toast.error(res.data.message);
-        navigate("/login");
-      }
-    },
-    onError: (err) => {
-      console.log(err);
+  // const navigate = useNavigate();
+  // const mutation = useMutation({
+  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   mutationFn: (body: any) => {
+  //       toast.error('');
+  //       return null
+  //   },
+  //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //   onSuccess: (res) => {
+  //     if (res.data.error === false) {
+  //       toast.error(res.data.message);
+  //       navigate("/login");
+  //     }
+  //   },
+  //   onError: (err) => {
+  //     console.log(err);
 
-      // toast.error(err.response.data.message);
-    },
-  });
+  //     // toast.error(err.response.data.message);
+  //   },
+  // });
   const onFinish = (value: LoginField) => {
-    const body = {
-      email: value.email,
-      password: value.password,
-    } as LoginField;
-    mutation.mutate(body);
+    // const body = {
+    //   email: value.email,
+    //   password: value.password,
+    // } as LoginField;
+    // mutation.mutate(body);
   };
 
   return (

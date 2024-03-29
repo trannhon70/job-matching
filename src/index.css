@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ant-btn-primary {
+  background-color: #164e63 !important;
+  color: white !important;
+}
+
+.ant-breadcrumb-separator {
+  color: white !important;
+}
+
+.ant-menu-item-selected {
+  background-color: #164e63 !important;
+  color: white !important;
+}
+
+.ck-editor__editable {
+  min-height: 300px;
+}

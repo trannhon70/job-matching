@@ -12,7 +12,6 @@ const AdminLayout = () => {
   const authenticated = useSelector((state: RootState) => state.auth);
   if (!authenticated.isAuthenticated) return <Navigate to="/login" />;
 
-  console.log(authenticated, "authenticated");
 
   const {
     token: { colorBgContainer, borderRadiusLG },

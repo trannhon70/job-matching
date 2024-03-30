@@ -15,7 +15,7 @@ const Register = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const refForm: any = useRef(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const mutation = useMutation({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     mutationFn: (body: IRegister) => {
@@ -24,9 +24,9 @@ const Register = () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onSuccess: (res) => {
       const data = res?.data?.data as LoginResponse;
+      navigate(`/template-agency/${data.infoUser.id}`);
       setCookie(Token.ACCESS_TOKEN, data.token);
       dispatch(setAuthenticated(data.infoUser));
-      navigate(`/template-agency/${data.infoUser.id}`);
     },
     onError: (err) => {
       console.log(err);

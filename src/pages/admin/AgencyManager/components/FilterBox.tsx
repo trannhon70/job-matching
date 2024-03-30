@@ -1,4 +1,4 @@
-import CorporateUserTypeSelect from "@/components/select/CorporateUserTypeSelect";
+// import CorporateUserTypeSelect from "@/components/select/CorporateUserTypeSelect";
 import { Button, DatePicker, DatePickerProps } from "antd";
 import Search, { SearchProps } from "antd/es/input/Search";
 import dayjs, { Dayjs } from "dayjs";
@@ -14,9 +14,9 @@ const FilterBox: React.FC<Props> = ({ onChangeFilter }) => {
   const onSearch: SearchProps["onSearch"] = (value) =>
     onChangeFilter("keyword", value);
 
-  const onChangeLevel = (value: string) => {
-    onChangeFilter("level", value);
-  };
+  // const onChangeLevel = (value: string) => {
+  //   onChangeFilter("level", value);
+  // };
 
   const onChangeStartDate: DatePickerProps["onChange"] = (date, dateString) => {
     onChangeFilter("startDate", dateString);
@@ -51,12 +51,12 @@ const FilterBox: React.FC<Props> = ({ onChangeFilter }) => {
       />
       <Button onClick={onClickToday}>Today</Button>
 
-      <CorporateUserTypeSelect
+      {/* <CorporateUserTypeSelect
         isFilterMode
         onChange={onChangeLevel}
         className="w-[200px]"
         placeholder="Level Filter"
-      />
+      /> */}
 
       <Search
         className="w-[300px] min-w-[300px]"

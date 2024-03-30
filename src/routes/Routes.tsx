@@ -17,7 +17,7 @@ import {
 import AgencyCompany from "@/pages/admin/AgencyCompany";
 import { MasterApprovalRequestForm } from "@/pages/auth/MasterApprovalRequest";
 import LoginPage from "@/pages/auth/login/LoginPage";
-import LoginAgency from "@/pages/auth/loginAgency";
+// import LoginAgency from "@/pages/auth/loginAgency";
 import Register from "@/pages/auth/register";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
@@ -27,9 +27,12 @@ const RootRoutes = () => {
       <Routes>
         <Route path="/" element={<Navigate to={"/admin"} />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/login-agency" element={<LoginAgency />} />
+        {/* <Route path="/login-agency" element={<LoginAgency />} /> */}
         <Route path="/register" element={<Register />} />
-        <Route path="/template-agency/:id" element={<MasterApprovalRequestForm />} />
+        <Route
+          path="/template-agency/:id"
+          element={<MasterApprovalRequestForm />}
+        />
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="corporate-user" element={<CorporateUserPage />} />

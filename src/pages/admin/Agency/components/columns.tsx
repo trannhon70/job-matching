@@ -51,8 +51,10 @@ export const columns: TableProps<CompanyType>["columns"] = [
     title: "Active",
     key: "Active",
     dataIndex: "isActivate",
-    render: (_, record) => (
-      <ActiveCheckbox checked={record.isActivate} companyId={record.id} />
-    ),
+    render: (_, record) => {
+      return (
+        <ActiveCheckbox checked={record.isActivate} companyId={record.id} />
+      );
+    },
   },
 ];

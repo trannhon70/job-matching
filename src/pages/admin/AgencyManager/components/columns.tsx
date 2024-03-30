@@ -1,7 +1,7 @@
 "use client";
 
 import { EmployerType } from "@/types/employer";
-import { Divider, TableProps, Tooltip } from "antd";
+import {  TableProps } from "antd";
 import dayjs from "dayjs";
 import { MdAssignmentAdd } from "react-icons/md";
 import ModalAssign from "./modalAssign";
@@ -15,43 +15,41 @@ export const columns: TableProps<EmployerType>["columns"] = [
   {
     title: "Email(ID)",
     key: "Email(ID)",
-    dataIndex: "email",
+    dataIndex: "user",
+    render(value) {
+      return <div>{value.email}</div>;
+    },
   },
   {
     title: "Name",
     key: "firstName",
-    dataIndex: "firstName",
+    dataIndex: "agency",
+    render(value) {
+      return <div>{value?.agencyName}</div>;
+    },
   },
   {
     title: "Phone",
     key: "Phone",
-    dataIndex: "phone",
+    dataIndex: "agency",
+    render(value) {
+      return <div>{value?.phone}</div>;
+    },
   },
   {
     title: "Agency",
     key: "Company",
-    dataIndex: "company",
-    render: (_, record) => (
-      <>
-        {record?.company?.isActivate ? (
-          <span>{record.company?.companyName}</span>
-        ) : (
-          <Tooltip placement="top" title={"This company is unavailable"}>
-            <span className="text-red-500">{record.company?.companyName}</span>
-          </Tooltip>
-        )}
-      </>
-    ),
+    dataIndex: "agency",
+    render(value) {
+      return <div>{value?.agencyName}</div>;
+    },
   },
   {
     title: "Address",
-    key: "Address",
-    render: (_, record) => (
-      <>
-        <span>{record?.country?.countryName}</span> <Divider type="vertical" />
-        <span>{record?.address}</span>
-      </>
-    ),
+    dataIndex: "agency",
+    render(value) {
+      return <div>{value?.address}</div>;
+    },
   },
   {
     title: "Assign",

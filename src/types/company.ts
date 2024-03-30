@@ -59,3 +59,26 @@ export interface User {
   lastName: string;
   avatarUrl: string;
 }
+
+export interface IListCompany {
+  address: string,
+  businessLicense: string,
+  companyName: string,
+  createdAt: string,
+  description: string,
+  email: string,
+  employee: string,
+  fileBusiness: string,
+  fileLogo: string,
+  foundation: string,
+  history: string,
+  id: number,
+  information: string,
+  isActivate: boolean,
+  isVerify: boolean,
+  periodEnd: string,
+  periodStart: string,
+  phone: string,
+  slug: string,
+  webPage: string,
+}

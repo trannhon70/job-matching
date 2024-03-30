@@ -1,0 +1,8 @@
+.ant-checkbox-wrapper {
+  display: flex;
+  margin-top: 10px;
+}
+.ant-checkbox-input {
+  height: 40px !important;
+  width: 40px !important;
+}

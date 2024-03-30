@@ -55,9 +55,9 @@ export const columns: TableProps<EmployerType>["columns"] = [
     title: "Assign",
     key: "level",
     dataIndex: "level",
-    render: () => (
+    render: (_, record) => (
       <div className="flex gap-2 flex-wrap">
-        <ModalAssign>
+        <ModalAssign record = {record}>
           <MdAssignmentAdd size={20} className="cursor-pointer" />
         </ModalAssign>
       </div>

@@ -21,7 +21,7 @@ const Agency = () => {
     });
 
   const { isFetching, data } = useQuery({
-    queryKey: [AdminQueryKeyEnum.COMPANY, pagination, filter],
+    queryKey: [AdminQueryKeyEnum.AGENCY, pagination, filter],
     queryFn: () => {
       return getAgencyList({ ...pagination, ...filter });
     },

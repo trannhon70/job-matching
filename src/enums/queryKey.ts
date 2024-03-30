@@ -3,6 +3,7 @@ export enum SelectQueryKeyEnum {
 }
 
 export enum AdminQueryKeyEnum {
+  AGENCY = "AGENCY",
   COMPANY = "COMPANY",
   JOB = "JOB",
   INTERVIEW = "INTERVIEW",

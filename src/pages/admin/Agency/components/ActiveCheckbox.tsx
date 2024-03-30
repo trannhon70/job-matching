@@ -1,6 +1,6 @@
 import { AdminQueryKeyEnum } from "@/enums/queryKey";
 import { queryClient } from "@/libs/react-query";
-import { updateActiveStatus } from "@/sevices/apis/admin/company";
+import { updateCheckAgency } from "@/sevices/apis/admin/agency";
 import { FormatErrorResponse } from "@/types/axios";
 import { Checkbox, Popconfirm, Spin } from "antd";
 import toast from "react-hot-toast";
@@ -13,12 +13,11 @@ interface Props {
 
 const ActiveCheckbox: React.FC<Props> = ({ checked, companyId }) => {
   const mutation = useMutation({
-    mutationFn: (body: { status: string; id: number[] }) =>
-      updateActiveStatus(body),
+    mutationFn: (body: { agencyId: number }) => updateCheckAgency(body),
     onSuccess: (res) => {
       toast.success(res?.data?.message);
       queryClient.invalidateQueries({
-        queryKey: [AdminQueryKeyEnum.COMPANY],
+        queryKey: [AdminQueryKeyEnum.AGENCY],
       });
     },
     onError: (err) => {
@@ -28,7 +27,7 @@ const ActiveCheckbox: React.FC<Props> = ({ checked, companyId }) => {
   });
 
   const confirm = () => {
-    mutation.mutate({ id: [companyId], status: `${!checked}` });
+    mutation.mutate({ agencyId: companyId });
   };
 
   return (
@@ -37,11 +36,11 @@ const ActiveCheckbox: React.FC<Props> = ({ checked, companyId }) => {
       onConfirm={confirm}
       description="Are you sure to continue the decision?"
       okText="Yes"
-      cancelText="No">
+      cancelText="No"
+    >
       <Checkbox checked={checked} />
       {mutation.isLoading && <Spin className="ml-2" size="small" />}
     </Popconfirm>
-    
   );
 };
 

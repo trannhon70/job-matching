@@ -41,6 +41,7 @@ const ActiveCheckbox: React.FC<Props> = ({ checked, companyId }) => {
       <Checkbox checked={checked} />
       {mutation.isLoading && <Spin className="ml-2" size="small" />}
     </Popconfirm>
+    
   );
 };
 

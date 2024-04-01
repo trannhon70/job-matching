@@ -11,7 +11,7 @@ export const columns: TableProps<CompanyType>["columns"] = [
     dataIndex: "no",
   },
   {
-    title: "Company Name",
+    title: "Agency Name",
     key: "agencyName",
     dataIndex: "agencyName",
   },

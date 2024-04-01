@@ -14,6 +14,15 @@ export const updateCheckAgency = (params: { agencyId: number }) => {
   );
 };
 
-export const getAllListCompany = (keyword: string) => {
-  return axiosAuth.get(`/agency/list/companies?keyword=${keyword}`);
+export const getAllListCompany = (keyword: string, userId: string) => {
+  return axiosAuth.get(
+    `/agency/list/companies?keyword=${keyword}&userId=${userId}`
+  );
+};
+
+export const createCompanytoAgency = (
+  userId: string,
+  body: { companiesIds: string[] }
+) => {
+  return axiosAuth.post(`/agency/assign/companies?userId=${userId}`, body);
 };

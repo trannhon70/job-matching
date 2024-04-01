@@ -81,4 +81,5 @@ export interface IListCompany {
   phone: string,
   slug: string,
   webPage: string,
+  isDistribution: boolean
 }

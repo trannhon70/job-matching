@@ -6,7 +6,7 @@ import {
   getAllListCompany,
 } from "@/sevices/apis/admin/agency";
 import { IListCompany } from "@/types/company";
-import { Button, Input, Modal } from "antd";
+import { Button, Modal } from "antd";
 import React, { useEffect, useState } from "react";
 import { Checkbox } from "antd";
 import type { CheckboxProps, GetProp } from "antd";
@@ -26,7 +26,7 @@ const ModalAssign = (props: IProps) => {
   const { children, record } = props;
   const [loading, setLoading] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [search, setSearch] = useState<string>("");
+  const [search] = useState<string>("");
   const [listCompany, setListcompany] = useState<IListCompany[]>([]);
   const [defaultCheckedList, setDefaultCheckedList] = useState<any[]>([]);
 

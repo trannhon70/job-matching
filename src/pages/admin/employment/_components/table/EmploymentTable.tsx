@@ -58,6 +58,7 @@ const EmploymentTable = () => {
             );
           },
         }}
+        scroll={{ x: 1200 }}
       />
       <TablePagination
         limit={pagination.limit}

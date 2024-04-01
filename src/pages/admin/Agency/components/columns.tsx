@@ -2,7 +2,7 @@ import { CompanyType } from "@/types/company";
 import { TableProps } from "antd";
 import dayjs from "dayjs";
 import ActiveCheckbox from "./ActiveCheckbox";
-import ViewDetailButton from "./ViewDetailButton";
+// import ViewDetailButton from "./ViewDetailButton";
 
 export const columns: TableProps<CompanyType>["columns"] = [
   {
@@ -42,11 +42,11 @@ export const columns: TableProps<CompanyType>["columns"] = [
     dataIndex: "createdAt",
     render: (date) => <>{dayjs(date).format("DD-MM-YYYY")}</>,
   },
-  {
-    title: "Detail",
-    key: "Detail",
-    render: (_, record) => <ViewDetailButton companySlug={record.slug} />,
-  },
+  // {
+  //   title: "Detail",
+  //   key: "Detail",
+  //   render: (_, record) => <ViewDetailButton companySlug={record.slug} />,
+  // },
   {
     title: "Active",
     key: "Active",

@@ -44,6 +44,7 @@ const CorporateUserTable = () => {
         columns={columns}
         dataSource={dataSource}
         pagination={false}
+        scroll={{ x: 1200 }}
       />
       <TablePagination
         limit={pagination.limit}

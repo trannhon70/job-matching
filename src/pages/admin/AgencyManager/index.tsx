@@ -24,7 +24,6 @@ const AgencyManager = () => {
     },
   });
 
-
   const totalItems = useMemo(() => data?.data?.totalItem ?? 1, [data]);
   const dataSource = useMemo(
     () =>
@@ -44,6 +43,7 @@ const AgencyManager = () => {
         columns={columns}
         dataSource={dataSource}
         pagination={false}
+        scroll={{ x: 1200 }}
       />
       <TablePagination
         limit={pagination.limit}

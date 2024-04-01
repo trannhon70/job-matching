@@ -44,6 +44,7 @@ const InterviewTable = () => {
         columns={columns}
         dataSource={dataSource}
         pagination={false}
+        scroll={{ x: 1600 }}
       />
       <TablePagination
         limit={pagination.limit}

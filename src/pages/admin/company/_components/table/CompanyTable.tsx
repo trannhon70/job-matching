@@ -45,6 +45,7 @@ const CompanyTable = () => {
         columns={columns}
         dataSource={dataSource}
         pagination={false}
+        scroll={{ x: 1300 }}
       />
       <TablePagination
         limit={pagination.limit}

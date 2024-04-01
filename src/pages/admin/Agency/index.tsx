@@ -45,9 +45,7 @@ const Agency = () => {
         columns={columns}
         dataSource={dataSource}
         pagination={false}
-        locale={{
-          emptyText: "không có dữ liệu",
-        }}
+        scroll={{ x: 1200 }}
       />
       <TablePagination
         limit={pagination.limit}

@@ -1,6 +1,6 @@
 import { AdminQueryKeyEnum } from "@/enums/queryKey";
 import { getStatisticDashboard } from "@/sevices/apis/admin/statistic";
-// import { Spin } from "antd";
+import { Spin } from "antd";
 import {
   BarElement,
   CategoryScale,
@@ -10,7 +10,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { useQuery } from "react-query";
 import { DatePicker } from "antd";
@@ -40,23 +40,20 @@ const Page = () => {
   const [startDate, setStartDate] = useState(formatDateStart());
   const [endDate, setEndDate] = useState(formatDateEnd());
   const [month, setMonth] = useState<Dayjs | null>();
-
+const [loading, setLoading] = useState<boolean>(false)
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {  data } = useQuery({
+  const { data } = useQuery({
     queryKey: [AdminQueryKeyEnum.STATISTIC, endDate, startDate],
     queryFn: () => {
       return getStatisticDashboard({ endDate, startDate });
     },
   });
 
-  const onChange = (date: dayjs.Dayjs | null) => {
-    console.log(date, "date");
-
+  const onChange = (date: dayjs.Dayjs) => {
     if (date) {
       const firstDayOfMonth = date.startOf("month").format("YYYY-MM-DD");
       const lastDayOfMonth = date.endOf("month").format("YYYY-MM-DD");
-      // console.log("Ngày đầu tiên của tháng:", firstDayOfMonth);
-      // console.log("Ngày cuối cùng của tháng:", lastDayOfMonth);
+
       setStartDate(firstDayOfMonth);
       setEndDate(lastDayOfMonth);
     }
@@ -98,23 +95,28 @@ const Page = () => {
   const onClickToday = () => {
     setStartDate(formatDateStart());
     setEndDate(formatDateEnd());
-    setMonth(undefined);
+    setMonth(null);
   };
 
   const onClickAll = () => {
     setStartDate("");
     setEndDate("");
-    // const currentDate = dayjs();
-    // const format = currentDate.format("YYYY-MM-DD");
-    setMonth(undefined);
+    setMonth(null);
   };
 
-  // if (isFetching)
-  //   return (
-  //     <div className="flex items-center justify-center h-[80vh]">
-  //       <Spin />
-  //     </div>
-  //   );
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, [])
+
+  if (loading)
+    return (
+      <div className="flex items-center justify-center h-[80vh]">
+        <Spin />
+      </div>
+    );
 
   return (
     <Fragment>
@@ -131,6 +133,8 @@ const Page = () => {
           placeholder="Select month"
           picker="month"
           value={month}
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          onFocus={() => setMonth(undefined)}
         />
         <button
           onClick={onClickAll}

@@ -28,10 +28,9 @@ const Register = () => {
       setCookie(Token.ACCESS_TOKEN, data.token);
       dispatch(setAuthenticated(data.infoUser));
     },
-    onError: (err) => {
-      console.log(err);
-
-      // toast.error(err.response.data.message);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onError: (err: any) => {
+      toast.error(err.response.data.message);
     },
   });
   const onFinish = (value: IRegister) => {

@@ -1,12 +1,13 @@
 "use client";
 
-import { EmployerType } from "@/types/employer";
+// import { EmployerType } from "@/types/employer";
 import {  TableProps } from "antd";
 import dayjs from "dayjs";
 import { MdAssignmentAdd } from "react-icons/md";
 import ModalAssign from "./modalAssign";
 
-export const columns: TableProps<EmployerType>["columns"] = [
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const columns: TableProps<any>["columns"] = [
   {
     title: "No",
     key: "no",

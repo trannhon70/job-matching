@@ -40,9 +40,9 @@ export const columns: TableProps<any>["columns"] = [
   {
     title: "Agency",
     key: "Company",
-    dataIndex: "agency",
-    render(value, record) {
-      return <div>{record?.user?.firstName}</div>;
+    dataIndex: "user",
+    render(value) {
+      return <div>{value?.firstName}</div>;
     },
   },
   {

@@ -26,7 +26,7 @@ export const formatDateEnd = () => {
 export function searchByName(data: any, name: string) {
   const searchTerm = name.toLowerCase();
   const searchResult = data.filter((item) =>
-    item.label.toLowerCase().includes(searchTerm)
+    item.companyName.toLowerCase().includes(searchTerm)
   );
   return searchResult;
 }

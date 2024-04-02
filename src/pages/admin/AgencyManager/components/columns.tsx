@@ -1,7 +1,7 @@
 "use client";
 
 // import { EmployerType } from "@/types/employer";
-import {  TableProps } from "antd";
+import { TableProps } from "antd";
 import dayjs from "dayjs";
 import { MdAssignmentAdd } from "react-icons/md";
 import ModalAssign from "./modalAssign";
@@ -41,8 +41,8 @@ export const columns: TableProps<any>["columns"] = [
     title: "Agency",
     key: "Company",
     dataIndex: "agency",
-    render(value) {
-      return <div>{value?.agencyName}</div>;
+    render(value, record) {
+      return <div>{record?.user?.firstName}</div>;
     },
   },
   {
@@ -58,7 +58,7 @@ export const columns: TableProps<any>["columns"] = [
     dataIndex: "level",
     render: (_, record) => (
       <div className="flex gap-2 flex-wrap">
-        <ModalAssign record = {record}>
+        <ModalAssign record={record}>
           <MdAssignmentAdd size={20} className="cursor-pointer" />
         </ModalAssign>
       </div>

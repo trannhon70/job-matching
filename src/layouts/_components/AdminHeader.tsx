@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import useReactRouterBreadcrumbs from "use-react-router-breadcrumbs";
 
 import logo from "@/assets/logos/logo.svg";
+import { Link } from "react-router-dom";
 
 export const routes = [
   // { path: "/", breadcrumb: "Home" },
@@ -41,8 +42,16 @@ export const AdminHeader = (props: any) => {
     {
       title: (
         <div className="text-white cursor-pointer">
-          {breadcrumbs?.slice(2).map(({ breadcrumb }) => {
-            return <div>{breadcrumb} </div>;
+          {breadcrumbs?.slice(2).map(({ match, breadcrumb }) => {
+            return (
+              <Link
+                to={match.pathname}
+                key={match.pathname}
+                className="!text-white"
+              >
+                {breadcrumb}{" "}
+              </Link>
+            );
           })}
         </div>
       ),

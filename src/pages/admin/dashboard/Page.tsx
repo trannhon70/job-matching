@@ -12,7 +12,7 @@ import {
 } from "chart.js";
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { DatePicker } from "antd";
 import dayjs, { Dayjs } from "dayjs";
 import { formatDateEnd, formatDateStart } from "@/utils/formatDate";
@@ -37,10 +37,11 @@ export const options = {
 const labels = ["Statistic"];
 
 const Page = () => {
+  const queryClient = useQueryClient();
   const [startDate, setStartDate] = useState(formatDateStart());
   const [endDate, setEndDate] = useState(formatDateEnd());
   const [month, setMonth] = useState<Dayjs | null>();
-const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data } = useQuery({
     queryKey: [AdminQueryKeyEnum.STATISTIC, endDate, startDate],
@@ -93,23 +94,25 @@ const [loading, setLoading] = useState<boolean>(false)
   }, [data]);
 
   const onClickToday = () => {
+    queryClient.removeQueries([AdminQueryKeyEnum.STATISTIC]);
     setStartDate(formatDateStart());
     setEndDate(formatDateEnd());
     setMonth(null);
   };
 
   const onClickAll = () => {
+    queryClient.removeQueries([AdminQueryKeyEnum.STATISTIC]);
     setStartDate("");
     setEndDate("");
     setMonth(null);
   };
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   if (loading)
     return (

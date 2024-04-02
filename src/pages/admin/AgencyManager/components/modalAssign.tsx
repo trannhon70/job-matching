@@ -123,7 +123,7 @@ const ModalAssign = (props: IProps) => {
             value="all"
             color="success"
           >
-            All Teachers
+            All Check
           </Checkbox>
 
           <hr className="mb-2 mt-2" />

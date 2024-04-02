@@ -6,7 +6,7 @@ import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
 import { Avatar, Breadcrumb, Dropdown, MenuProps, theme } from "antd";
 import { Header } from "antd/es/layout/layout";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import useReactRouterBreadcrumbs from "use-react-router-breadcrumbs";
 
 import logo from "@/assets/logos/logo.svg";
@@ -41,7 +41,7 @@ export const AdminHeader = (props: any) => {
     {
       title: (
         <div className="text-white cursor-pointer">
-          {breadcrumbs?.slice(2).map(({ match, breadcrumb }) => {
+          {breadcrumbs?.slice(2).map(({ breadcrumb }) => {
             return <div>{breadcrumb} </div>;
           })}
         </div>

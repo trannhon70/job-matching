@@ -38,14 +38,15 @@ export const MasterApprovalRequestForm = () => {
       return createTemplateAgency(dataRef);
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onSuccess: (res : any) => {
-      if (res.response.data.error === false) {
+    onSuccess: (res: any) => {
+
+      if (res.data.error === false) {
         toast.success(res.data.message);
         navigate("/admin/dashboard");
       }
     },
     onError: (err: any) => {
-      toast.error(err.response.data.message);
+      toast.error(err.data.message);
     },
   });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

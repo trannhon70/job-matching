@@ -22,8 +22,6 @@ export const MasterApprovalRequestForm = () => {
   const [country, setCountry] = useState([]);
   const { id } = useParams();
 
-  console.log(id, "id");
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const navigate = useNavigate();
   const mutation = useMutation({
@@ -40,14 +38,14 @@ export const MasterApprovalRequestForm = () => {
       return createTemplateAgency(dataRef);
     },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onSuccess: (res) => {
-      if (res.data.error === false) {
+    onSuccess: (res : any) => {
+      if (res.response.data.error === false) {
         toast.success(res.data.message);
         navigate("/admin/dashboard");
       }
     },
-    onError: (err : any) => {
-      toast.error(err.data.message);
+    onError: (err: any) => {
+      toast.error(err.response.data.message);
     },
   });
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

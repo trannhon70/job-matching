@@ -78,9 +78,8 @@ export const LoginForm = () => {
         </Button>
       </Form.Item>
       <p className="text-center text-base">
-        Already have an account?
-        <Link className="text-blue-600 underline" to="/register">
-          Register
+        <Link className="text-blue-600 underline" to="/login-agency">
+          Login with Agency account
         </Link>
       </p>
     </Form>

@@ -1,3 +1,4 @@
+import { LoginField } from "@/types/auth";
 import { axiosAuth } from "../axios/axios";
 
 export const getAgencyManager = (params?: object) => {
@@ -26,3 +27,7 @@ export const createCompanytoAgency = (
 ) => {
   return axiosAuth.post(`/agency/assign/companies?userId=${userId}`, body);
 };
+
+export const LoginPostAgency = (body:LoginField) => {
+  return axiosAuth.post(`/auth/loginAgency`, body);
+}

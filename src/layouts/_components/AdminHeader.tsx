@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import avatar from "@/assets/logos/job-matching-logo.svg";
 import useAuth from "@/hooks/auth/useAuth";
 import { RootState } from "@/redux/store";
@@ -25,8 +26,28 @@ export const routes = [
   // { path: "/campus/approval-request", breadcrumb: "Approval Request" },
 ];
 
-export const AdminHeader = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const AdminHeader = (props: any) => {
+  const { roles } = props;
+
+  // console.log(roles, "roles");
+
   const breadcrumbs = useReactRouterBreadcrumbs(routes);
+  // console.log(breadcrumbs, "breadcrumbs");
+  const options = [
+    {
+      title: <>{roles[0].roleName === "ADMIN" ? "Admin" : "Agency"}</>,
+    },
+    {
+      title: (
+        <div className="text-white cursor-pointer">
+          {breadcrumbs?.slice(2).map(({ match, breadcrumb }) => {
+            return <div>{breadcrumb} </div>;
+          })}
+        </div>
+      ),
+    },
+  ];
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -36,7 +57,11 @@ export const AdminHeader = () => {
       className="!bg-[#083344] "
     >
       <div className="w-full h-full flex items-center justify-between p-6">
-        <Breadcrumb className="text-xl font-semibold !text-white">
+        <Breadcrumb
+          className="text-xl font-semibold !text-white"
+          items={options}
+        />
+        {/* <Breadcrumb className="text-xl font-semibold !text-white">
           {breadcrumbs?.slice(1).map(({ match, breadcrumb }) => (
             <Breadcrumb.Item key={match.pathname} className="!text-white">
               <Link to={match.pathname} className="!text-white">
@@ -44,7 +69,7 @@ export const AdminHeader = () => {
               </Link>
             </Breadcrumb.Item>
           ))}
-        </Breadcrumb>
+        </Breadcrumb> */}
         <UserAvatar />
       </div>
     </Header>

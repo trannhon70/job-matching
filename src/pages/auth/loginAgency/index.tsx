@@ -1,39 +1,59 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 // import { register } from "@/sevices/apis/auth/authApi";
-import { LoginField } from "@/types/auth";
+import { Token } from "@/enums/admin";
+import { setAuthenticated } from "@/redux/slices/auth/authSlice";
+import { LoginPostAgency } from "@/sevices/apis/admin/agency";
+import { LoginField, LoginResponse } from "@/types/auth";
+import { setCookie } from "@/utils/cookie";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useMutation } from "react-query";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginAgency = () => {
+  const dispatch = useDispatch();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // const navigate = useNavigate();
-  // const mutation = useMutation({
-  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   mutationFn: (body: any) => {
-  //       toast.error('');
-  //       return null
-  //   },
-  //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //   onSuccess: (res) => {
-  //     if (res.data.error === false) {
-  //       toast.error(res.data.message);
-  //       navigate("/login");
-  //     }
-  //   },
-  //   onError: (err) => {
-  //     console.log(err);
+  const navigate = useNavigate();
+  const mutation = useMutation({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    mutationFn: (body: LoginField) => {
+      return LoginPostAgency(body);
+    },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+    onSuccess: (res: any) => {
+      if (res.data.error === false) {
+        const data = res?.data?.data as LoginResponse;
+        setCookie(Token.ACCESS_TOKEN, data.token);
+        dispatch(setAuthenticated(data.infoUser));
+        navigate("/admin/dashboard");
+      }
+    },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onError: (err: any) => {
+      console.log(err);
+      if (err.response.data.code === 493) {
+        const data = err?.response?.data?.data as LoginResponse;
+        setCookie(Token.ACCESS_TOKEN, data.token);
+        dispatch(setAuthenticated(data.infoUser));
+        navigate(`/template-agency/${err.response.data.data?.infoUser?.id}`);
+      }
+      if (err.response.data.message === "YOU_MUST_CREATE_AN_AGENCY") {
+        toast.success("YOU MUST CREATE AN AGENCY");
+      } else {
+        toast.error(err.response.data.message);
+      }
+    },
+  });
 
-  //     // toast.error(err.response.data.message);
-  //   },
-  // });
-  const onFinish = () => {
-    // const body = {
-    //   email: value.email,
-    //   password: value.password,
-    // } as LoginField;
-    // mutation.mutate(body);
+  const onFinish = (value: LoginField) => {
+    const body = {
+      email: value.email,
+      password: value.password,
+    } as LoginField;
+    mutation.mutate(body);
   };
 
   return (

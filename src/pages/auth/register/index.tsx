@@ -179,8 +179,8 @@ const Register = () => {
           </Form.Item>
           <p className="text-center text-base">
             Already have an account?
-            <Link className="text-blue-600 underline" to="/login">
-              Login
+            <Link className="text-blue-600 underline" to="/login-agency">
+              Login Agency
             </Link>
           </p>
         </Form>

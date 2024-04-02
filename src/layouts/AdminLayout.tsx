@@ -25,7 +25,7 @@ const AdminLayout = () => {
         <AdminMenu roles={authenticated.infoUser?.roles} />
       </Sider>
       <Layout>
-        <AdminHeader />
+        <AdminHeader roles={authenticated.infoUser?.roles} />
         <Content
           style={{
             margin: "16px",
